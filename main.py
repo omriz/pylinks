@@ -3,8 +3,11 @@
 from fastapi import FastAPI
 from fastapi import responses
 
+import golinker
+
 app = FastAPI()
 
+goLinker = golinker.GoLinker()
 
 @app.get("/")
 async def root():
