@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>PYLinks main</title>
+</head>
+<body>
+
+<h1>Links:</h1>
+<table id="links_table">
+    <tr>
+        <th>Name</th>
+        <th>Target</th>
+    </tr>
+</table>
+</body>
+<script>
+fetch("/api/links")
+.then(response=>response.json())
+.then(json=>{
+       let table = document.getElementById("links_table")
+       for (var link of json) {
+        row = table.insertRow(-1)
+        c1 = document.createElement("td")
+        c1.innerText = link.name
+        row.appendChild(c1)
+        c2 = document.createElement("td")
+        a = document.createElement("a")
+        a.title = link.target
+        a.href = link.target
+        a.innerText = link.target
+        c2.appendChild(a)
+        row.appendChild(c2)
+       }
+})
+</script>
+</html>
